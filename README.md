@@ -1,25 +1,62 @@
-# NutriTrackPro
+# CalorieZen
 
 A comprehensive nutrition and fitness tracking application built with React, TypeScript, and MongoDB.
 
 ## Features
 
-- **User Authentication**: Secure login and registration system
-- **Food Diary**: Track your daily food intake with calorie counting
+- **User Authentication**: Secure login and registration system with session management
+- **Food Diary**: Track your daily food intake with detailed nutritional information
 - **Exercise Tracking**: Log your workouts and track calories burned
-- **Dashboard**: Visualize your nutrition and fitness data
-- **Body Metrics**: Track your weight, height, and other body measurements
-- **Theme Customization**: Choose from multiple themes to personalize your experience
-- **Responsive Design**: Works on desktop and mobile devices
-- **MongoDB Integration**: Secure and scalable data storage
+- **Dashboard**: 
+  - Visual representation of daily calorie intake and burn
+  - Progress charts and statistics
+  - Weekly and monthly summaries
+- **Body Metrics**: 
+  - Track weight, height, and BMI
+  - Calculate BMR and TDEE
+  - Set and monitor fitness goals
+- **Theme Customization**: 
+  - Multiple built-in themes (Fresh, Calm, Bold, Dark, Natural, Minimal)
+  - Customizable UI elements
+- **Responsive Design**: Fully responsive layout with collapsible sidebar
+- **MongoDB Integration**: 
+  - Secure data storage with MongoDB
+  - Support for both local MongoDB and MongoDB Atlas
+  - Automatic data migration tools
 
 ## Tech Stack
 
-- **Frontend**: React, TypeScript, Vite, Tailwind CSS, Shadcn UI
-- **Backend**: Node.js, Express, TypeScript
-- **Database**: MongoDB
-- **Authentication**: Express session with MongoDB store
-- **State Management**: React Query
+### Frontend
+- React 18 with TypeScript
+- Vite for build tooling
+- Tailwind CSS for styling
+- Radix UI primitives for accessible components
+- React Query for state management
+- Recharts for data visualization
+- Lucide React for icons
+- React Hook Form for form handling
+
+### Backend
+- Node.js with Express
+- TypeScript
+- MongoDB with Mongoose
+- Express session with MongoDB store
+- Passport.js for authentication
+
+## UI Components
+
+The application uses a combination of:
+- Custom-built React components styled with Tailwind CSS
+- Radix UI primitives for accessible UI elements
+- Lucide React icons for consistent iconography
+- Recharts for data visualization components
+
+### Theme System
+The application includes a robust theming system with:
+- Six predefined color schemes
+- Dark and light mode support
+- CSS variables for dynamic styling
+- Tailwind CSS for utility-based styling
 
 ## Getting Started
 
@@ -27,6 +64,7 @@ A comprehensive nutrition and fitness tracking application built with React, Typ
 
 - Node.js (v14 or higher)
 - MongoDB (local installation or MongoDB Atlas account)
+- npm or yarn package manager
 
 ### Installation
 
@@ -41,93 +79,85 @@ A comprehensive nutrition and fitness tracking application built with React, Typ
    npm install
    ```
 
-3. Configure MongoDB:
-   - Ensure MongoDB is running locally on port 27017, or
-   - Update the connection string in `server/config.ts` to point to your MongoDB instance
+3. Configure environment variables:
+   Create a `.env` file in the root directory:
+   ```env
+   MONGO_LOCAL_URI=your_mongodb_connection_string
+   SESSION_SECRET=your_session_secret
+   NODE_ENV=development
+   ```
 
 4. Start the development servers:
    ```bash
-   # Start both frontend and backend with a single command
    npm run dev
-   
-   # Or start them separately if needed
-   npm run dev:server  # Backend only
-   npm run dev:client  # Frontend only
    ```
 
-5. Access the application:
+   The application will be available at:
    - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000 (or http://localhost:3001 if port 3000 is already in use)
+   - Backend API: http://localhost:3000
 
-## MongoDB Integration
+## MongoDB Configuration
 
-The application uses MongoDB for data storage with the following collections:
+The application supports both local MongoDB and MongoDB Atlas:
 
-- **Users**: User accounts and profile information
-- **FoodEntries**: Food diary entries with nutritional information
-- **Exercises**: Workout logs with calories burned
-
-The MongoDB connection is configured in `server/config.ts` and implemented in `server/mongo-storage.ts`.
+```typescript
+// server/config.ts
+export const mongoConfig = {
+  localUri: process.env.MONGO_LOCAL_URI || "mongodb://localhost:27017/CalorieZen",
+  atlasUri: process.env.MONGO_LOCAL_URI || "mongodb://localhost:27017/CalorieZen",
+  dbName: process.env.MONGO_DB_NAME || "CalorieZen"
+}
+```
 
 ### Data Migration
-
-If you're migrating from the file-based storage to MongoDB, you can use the migration script:
-
+To migrate existing data to MongoDB:
 ```bash
 npm run migrate:mongo
 ```
 
+## Available Scripts
+
+- `npm run dev`: Start both frontend and backend in development mode
+- `npm run dev:server`: Start only the backend server
+- `npm run dev:client`: Start only the frontend development server
+- `npm run build`: Build both frontend and backend for production
+- `npm start`: Run the production server
+- `npm run check`: Run TypeScript type checking
+- `npm run migrate:mongo`: Run MongoDB data migration
+
 ## Security Features
 
 - Secure session management with MongoDB store
-- Password hashing for user authentication
-- CORS protection for API endpoints
-- HTTP-only cookies for session management
+- Password hashing with bcrypt
+- HTTP-only cookies
+- CORS protection
 - Environment-based security settings
-
-## Deployment
-
-### Production Build
-
-```bash
-# Build the frontend and backend
-npm run build
-
-# Start the production server
-npm start
-```
-
-### Environment Variables
-
-- `PORT`: Server port (default: 3000)
-- `NODE_ENV`: Environment (development/production)
-- `MONGO_LOCAL_URI`: MongoDB connection string
-- `SESSION_SECRET`: Secret for session encryption
-- `CORS_ORIGIN`: Allowed CORS origin
+- Rate limiting on API endpoints
 
 ## Troubleshooting
 
-### Port Already in Use
+### Port Conflicts
+If port 3000 is in use, the server will automatically try port 3001. To manually free up ports:
+```bash
+# Windows
+taskkill /F /IM node.exe
 
-If you see an "EADDRINUSE" error:
-
-1. The server will automatically try to use port 3001 if port 3000 is already in use
-2. You can manually kill Node.js processes before starting the server:
-   ```bash
-   # On Windows
-   taskkill /F /IM node.exe
-   
-   # On Linux/macOS
-   pkill node
-   ```
+# Linux/macOS
+pkill node
+```
 
 ### MongoDB Connection Issues
+1. Check MongoDB service status
+2. Verify connection string in `.env` file
+3. Ensure MongoDB port (27017) is accessible
+4. Check MongoDB Atlas network access settings if using cloud hosting
 
-If you have trouble connecting to MongoDB:
+## Browser Support
 
-1. Ensure MongoDB is installed and running
-2. Check the connection string in `server/config.ts`
-3. Verify that port 27017 is not blocked by a firewall
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
 
 ## License
 
@@ -135,6 +165,9 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- [Shadcn UI](https://ui.shadcn.com/) for the component library
+- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives
+- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
 - [Lucide Icons](https://lucide.dev/) for the icon set
-- [MongoDB](https://www.mongodb.com/) for the database 
+- [MongoDB](https://www.mongodb.com/) for the database
+- [React Query](https://tanstack.com/query/latest) for data fetching
+- [Recharts](https://recharts.org/) for charts and graphs 
