@@ -1,70 +1,24 @@
-# CalorieZen
+# NutriTrackPro
 
-A comprehensive nutrition and fitness tracking application built with React, TypeScript, and MongoDB.
+NutriTrackPro is a comprehensive nutrition and fitness tracking application that helps users monitor their diet, track workouts, and receive AI-powered insights about their health and fitness journey. The application leverages Google's Gemini AI to provide personalized nutrition analysis and fitness recommendations.
 
-## Features
+## 🌟 Key Features
 
-- **User Authentication**: Secure login and registration system with session management
-- **Food Diary**: Track your daily food intake with detailed nutritional information
-- **Exercise Tracking**: Log your workouts and track calories burned
-- **Dashboard**: 
-  - Visual representation of daily calorie intake and burn
-  - Progress charts and statistics
-  - Weekly and monthly summaries
-- **Body Metrics**: 
-  - Track weight, height, and BMI
-  - Calculate BMR and TDEE
-  - Set and monitor fitness goals
-- **Theme Customization**: 
-  - Multiple built-in themes (Fresh, Calm, Bold, Dark, Natural, Minimal)
-  - Customizable UI elements
-- **Responsive Design**: Fully responsive layout with collapsible sidebar
-- **MongoDB Integration**: 
-  - Secure data storage with MongoDB
-  - Support for both local MongoDB and MongoDB Atlas
-  - Automatic data migration tools
+- **AI-Powered Nutrition Analysis**: Powered by Google's Gemini AI, the app provides detailed nutritional insights and personalized recommendations based on your food diary.
+- **Fitness Assistant**: An intelligent chatbot powered by Gemini AI that offers personalized fitness advice, workout recommendations, and answers to your health-related questions.
+- **Food Diary**: Track your daily food intake with detailed nutritional information.
+- **Workout Tracking**: Log and monitor your exercise routines.
+- **Progress Visualization**: View your fitness journey through interactive charts and graphs.
+- **Personalized Dashboard**: Get a comprehensive overview of your nutrition and fitness metrics.
+- **Theme Support**: Choose between light and dark themes for optimal viewing experience.
 
-## Tech Stack
-
-### Frontend
-- React 18 with TypeScript
-- Vite for build tooling
-- Tailwind CSS for styling
-- Radix UI primitives for accessible components
-- React Query for state management
-- Recharts for data visualization
-- Lucide React for icons
-- React Hook Form for form handling
-
-### Backend
-- Node.js with Express
-- TypeScript
-- MongoDB with Mongoose
-- Express session with MongoDB store
-- Passport.js for authentication
-
-## UI Components
-
-The application uses a combination of:
-- Custom-built React components styled with Tailwind CSS
-- Radix UI primitives for accessible UI elements
-- Lucide React icons for consistent iconography
-- Recharts for data visualization components
-
-### Theme System
-The application includes a robust theming system with:
-- Six predefined color schemes
-- Dark and light mode support
-- CSS variables for dynamic styling
-- Tailwind CSS for utility-based styling
-
-## Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- MongoDB (local installation or MongoDB Atlas account)
-- npm or yarn package manager
+- npm (v6 or higher)
+- Google Gemini API Key (Required for AI features)
 
 ### Installation
 
@@ -79,95 +33,85 @@ The application includes a robust theming system with:
    npm install
    ```
 
-3. Configure environment variables:
-   Create a `.env` file in the root directory:
-   ```env
-   MONGO_LOCAL_URI=your_mongodb_connection_string
-   SESSION_SECRET=your_session_secret
-   NODE_ENV=development
-   ```
+3. Configure Gemini API:
+   - Obtain an API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
+   - Add your API key in the application settings or set it as an environment variable
 
-4. Start the development servers:
+4. Start the development server:
    ```bash
    npm run dev
    ```
 
-   The application will be available at:
-   - Frontend: http://localhost:5173
-   - Backend API: http://localhost:3000
+## 🧠 AI Integration
 
-## MongoDB Configuration
+NutriTrackPro leverages Google's Gemini AI to provide intelligent features:
 
-The application supports both local MongoDB and MongoDB Atlas:
+- **Nutritional Analysis**: Get detailed insights about your food choices and dietary patterns
+- **Fitness Assistant**: Receive personalized workout recommendations and health advice
+- **Smart Recommendations**: AI-powered suggestions for improving your nutrition and fitness routine
 
-```typescript
-// server/config.ts
-export const mongoConfig = {
-  localUri: process.env.MONGO_LOCAL_URI || "mongodb://localhost:27017/CalorieZen",
-  atlasUri: process.env.MONGO_LOCAL_URI || "mongodb://localhost:27017/CalorieZen",
-  dbName: process.env.MONGO_DB_NAME || "CalorieZen"
-}
-```
+The AI features require a valid Gemini API key to function. You can configure your API key in the application settings.
 
-### Data Migration
-To migrate existing data to MongoDB:
-```bash
-npm run migrate:mongo
-```
+## 🛠️ Tech Stack
 
-## Available Scripts
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **State Management**: React Context API
+- **AI Integration**: Google Gemini API
+- **Styling**: Tailwind CSS, shadcn/ui components
+- **Charts**: Recharts
+- **Icons**: Lucide React
 
-- `npm run dev`: Start both frontend and backend in development mode
-- `npm run dev:server`: Start only the backend server
-- `npm run dev:client`: Start only the frontend development server
-- `npm run build`: Build both frontend and backend for production
-- `npm start`: Run the production server
-- `npm run check`: Run TypeScript type checking
-- `npm run migrate:mongo`: Run MongoDB data migration
+## 📱 Features in Detail
 
-## Security Features
+### AI-Powered Nutrition Analysis
+- Detailed breakdown of your daily nutrition
+- Personalized recommendations based on your goals
+- Smart insights about your eating patterns
+- Nutrient deficiency detection
 
-- Secure session management with MongoDB store
-- Password hashing with bcrypt
-- HTTP-only cookies
-- CORS protection
-- Environment-based security settings
-- Rate limiting on API endpoints
+### Fitness Assistant
+- Interactive chatbot for fitness advice
+- Personalized workout recommendations
+- Exercise form guidance
+- Recovery tips and techniques
 
-## Troubleshooting
+### Food Diary
+- Easy food logging
+- Nutritional information lookup
+- Meal planning
+- Custom food entries
 
-### Port Conflicts
-If port 3000 is in use, the server will automatically try port 3001. To manually free up ports:
-```bash
-# Windows
-taskkill /F /IM node.exe
+### Workout Tracking
+- Exercise logging
+- Workout templates
+- Progress tracking
+- Performance analytics
 
-# Linux/macOS
-pkill node
-```
+### Progress Visualization
+- Interactive charts
+- Progress trends
+- Goal tracking
+- Achievement milestones
 
-### MongoDB Connection Issues
-1. Check MongoDB service status
-2. Verify connection string in `.env` file
-3. Ensure MongoDB port (27017) is accessible
-4. Check MongoDB Atlas network access settings if using cloud hosting
+## 🎨 UI/UX Features
 
-## Browser Support
+- **Responsive Design**: Works seamlessly on desktop and mobile devices
+- **Theme Support**: Light and dark mode options
+- **Intuitive Navigation**: Easy-to-use interface
+- **Accessibility**: WCAG 2.1 compliant
+- **Performance**: Optimized for fast loading and smooth interactions
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+## 🤝 Contributing
 
-## License
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+## 📄 License
 
-## Acknowledgments
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-- [Radix UI](https://www.radix-ui.com/) for accessible UI primitives
-- [Tailwind CSS](https://tailwindcss.com/) for the styling framework
+## 🙏 Acknowledgments
+
+- [Google Gemini AI](https://ai.google.dev/) for powering our intelligent features
+- [shadcn/ui](https://ui.shadcn.com/) for the beautiful component library
 - [Lucide Icons](https://lucide.dev/) for the icon set
-- [MongoDB](https://www.mongodb.com/) for the database
-- [React Query](https://tanstack.com/query/latest) for data fetching
-- [Recharts](https://recharts.org/) for charts and graphs 
+- [Recharts](https://recharts.org/) for the charting library 
