@@ -1,16 +1,17 @@
-# NutriTrackPro
+# CalorieZen
 
-NutriTrackPro is a comprehensive nutrition and fitness tracking application that helps users monitor their diet, track workouts, and receive AI-powered insights about their health and fitness journey. The application leverages Google's Gemini AI to provide personalized nutrition analysis and fitness recommendations.
+CalorieZen is a comprehensive nutrition and fitness tracking application that helps users monitor their diet, track workouts, and receive AI-powered insights about their health and fitness journey. The application leverages Google's Gemini AI to provide personalized nutrition analysis and fitness recommendations.
 
 ## 🌟 Key Features
 
 - **AI-Powered Nutrition Analysis**: Powered by Google's Gemini AI, the app provides detailed nutritional insights and personalized recommendations based on your food diary.
-- **Fitness Assistant**: An intelligent chatbot powered by Gemini AI that offers personalized fitness advice, workout recommendations, and answers to your health-related questions.
-- **Food Diary**: Track your daily food intake with detailed nutritional information.
-- **Workout Tracking**: Log and monitor your exercise routines.
-- **Progress Visualization**: View your fitness journey through interactive charts and graphs.
-- **Personalized Dashboard**: Get a comprehensive overview of your nutrition and fitness metrics.
-- **Theme Support**: Choose between light and dark themes for optimal viewing experience.
+- **Fitness Assistant Chatbot**: An intelligent chatbot powered by Gemini AI that offers personalized fitness advice, workout recommendations, and answers to your health-related questions.
+- **Food Diary**: Track your daily food intake with AI-assisted calorie estimation.
+- **Exercise Diary**: Log and monitor your workout routines.
+- **Interactive Dashboard**: View your nutrition summary, recent activities, and progress charts.
+- **Body Metrics Tracking**: Record and monitor your weight, height, BMI, and other body measurements.
+- **Calorie Calculator**: Calculate your daily calorie needs based on your metrics and activity level.
+- **Customizable Themes**: Choose from multiple theme options for a personalized experience.
 
 ## 🚀 Getting Started
 
@@ -24,8 +25,8 @@ NutriTrackPro is a comprehensive nutrition and fitness tracking application that
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/NutriTrackPro.git
-   cd NutriTrackPro
+   git clone https://github.com/yourusername/CalorieZen.git
+   cd CalorieZen
    ```
 
 2. Install dependencies:
@@ -35,71 +36,68 @@ NutriTrackPro is a comprehensive nutrition and fitness tracking application that
 
 3. Configure Gemini API:
    - Obtain an API key from [Google AI Studio](https://makersuite.google.com/app/apikey)
-   - Add your API key in the application settings or set it as an environment variable
+   - Add your API key in the application settings (via the API Key Config dialog)
 
 4. Start the development server:
    ```bash
    npm run dev
    ```
+   
+   This will start both the front-end and back-end servers:
+   - Front-end: http://localhost:5173
+   - Back-end: http://localhost:3000
 
-## 🧠 AI Integration
+## 🧠 Gemini AI Integration
 
-NutriTrackPro leverages Google's Gemini AI to provide intelligent features:
+CalorieZen integrates Google's Gemini AI through the following features:
 
-- **Nutritional Analysis**: Get detailed insights about your food choices and dietary patterns
-- **Fitness Assistant**: Receive personalized workout recommendations and health advice
-- **Smart Recommendations**: AI-powered suggestions for improving your nutrition and fitness routine
+- **AI Food Search**: Get instant calorie estimations for any food by typing its name
+- **Nutrition Insights**: Receive personalized analysis of your eating patterns and nutritional balance
+- **Fitness Assistant**: Chat with an AI assistant that provides tailored workout advice and nutrition tips
+- **Contextual Recommendations**: Get suggestions based on your previous entries and personal metrics
 
-The AI features require a valid Gemini API key to function. You can configure your API key in the application settings.
+The API key can be configured through the API Key Config dialog accessible from the navigation sidebar. A fallback API key is provided for demo purposes, but for the best experience, users should configure their own API key.
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React, TypeScript, Tailwind CSS
-- **State Management**: React Context API
-- **AI Integration**: Google Gemini API
-- **Styling**: Tailwind CSS, shadcn/ui components
-- **Charts**: Recharts
+- **Frontend**: React 18, TypeScript, Vite
+- **Backend**: Node.js, Express
+- **UI Components**: Radix UI primitives, shadcn/ui
+- **Styling**: Tailwind CSS
+- **State Management**: React Query
+- **Routing**: wouter
+- **AI Integration**: Google Gemini API (@google/generative-ai)
+- **Data Visualization**: Recharts
+- **Form Handling**: React Hook Form
 - **Icons**: Lucide React
 
-## 📱 Features in Detail
+## 📱 Application Structure
 
-### AI-Powered Nutrition Analysis
-- Detailed breakdown of your daily nutrition
-- Personalized recommendations based on your goals
-- Smart insights about your eating patterns
-- Nutrient deficiency detection
+### Pages
+- **Home**: Landing page with overview of the application
+- **Dashboard**: Summary view with nutrition insights and recent activity
+- **Food Diary**: Log and manage food entries with AI-assisted calorie estimation
+- **Exercise Diary**: Track workouts and physical activities
+- **Auth**: Login and registration functionality
 
-### Fitness Assistant
-- Interactive chatbot for fitness advice
-- Personalized workout recommendations
-- Exercise form guidance
-- Recovery tips and techniques
+### Key Components
+- **AI Chatbot**: Interactive fitness and nutrition assistant
+- **Nutrition Insights**: AI-powered dietary analysis
+- **Food Entry**: Food logging with manual or AI-assisted options
+- **Exercise Log**: Workout tracking and calorie burn calculation
+- **Calorie Calculator**: BMR and TDEE calculator
+- **API Key Config**: Management interface for the Gemini API key
+- **NavSidebar**: Navigation menu with theme controls and user profile
+- **Progress Chart**: Visual representation of nutritional data
 
-### Food Diary
-- Easy food logging
-- Nutritional information lookup
-- Meal planning
-- Custom food entries
+## 🎨 UI Features
 
-### Workout Tracking
-- Exercise logging
-- Workout templates
-- Progress tracking
-- Performance analytics
-
-### Progress Visualization
-- Interactive charts
-- Progress trends
-- Goal tracking
-- Achievement milestones
-
-## 🎨 UI/UX Features
-
-- **Responsive Design**: Works seamlessly on desktop and mobile devices
-- **Theme Support**: Light and dark mode options
-- **Intuitive Navigation**: Easy-to-use interface
-- **Accessibility**: WCAG 2.1 compliant
-- **Performance**: Optimized for fast loading and smooth interactions
+- **Responsive Design**: Works on desktop and mobile devices
+- **Multiple Themes**: Selection of color themes including light and dark options
+- **Collapsible Sidebar**: Space-efficient navigation
+- **Toast Notifications**: User feedback for actions
+- **Interactive Charts**: Visual data representation
+- **Modal Dialogs**: For configuration and data entry
 
 ## 🤝 Contributing
 
